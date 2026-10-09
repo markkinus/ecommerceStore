@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams, Outlet, NavLink } from 'react-router-dom';
 
 function ProductDetails() {
   const { id }= useParams();
@@ -55,6 +55,29 @@ function ProductDetails() {
             Add to Cart
           </button>
         </div>
+      </div>
+      <div className="mt-8">
+        <nav className="flex gap-4 mb-4">
+          <NavLink
+            to={`/products/${id}/`}
+            className={({ isActive }) => (isActive ? "text-blue-500" : "")}
+          >
+            Overview
+          </NavLink>
+          <NavLink
+            to={`/products/${id}/reviews`}
+            className={({ isActive }) => (isActive ? "text-blue-500" : "")}
+          >
+            Reviews
+          </NavLink>
+          <NavLink
+            to={`/products/${id}/specifications`}
+            className={({ isActive }) => (isActive ? "text-blue-500" : "")}
+          >
+            Specifications
+          </NavLink>
+        </nav>
+        <Outlet />
       </div>
     </div>
   )
