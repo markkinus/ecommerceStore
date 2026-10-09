@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function ProductCard({ product }) {
   return (
@@ -12,9 +13,10 @@ function ProductCard({ product }) {
         <p className='text-gray-700 mb-2'>
             ${product.price}
             </p>
-        <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>
-            View Product
-            </button>
+        <Link to={`/products/${product.id}`} 
+        className="mt-4 block w-full rounded-lg bg-gray-900 px-4 py-2 text-center text-white hover:bg-gray-700"> 
+        View Product
+        </Link>
     </div>
   )
 }
