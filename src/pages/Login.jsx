@@ -1,11 +1,14 @@
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 function Login() {
   const { user, login, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState('');
+
+  const redirectTo = location.state?.from?.pathname || '/'
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -13,7 +16,7 @@ function Login() {
       return;
   }
     login(email);
-    navigate('/checkout');
+    navigate(redirectTo, { replace: true });
   };
 
   if (user) {
