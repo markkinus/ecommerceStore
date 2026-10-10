@@ -9,6 +9,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Overview from "./pages/product-tabs/Overview";
 import Reviews from "./pages/product-tabs/Reviews";
 import Specifications from "./pages/product-tabs/Specifications";
+import ProtectedCheckout from "./components/ProtectedCheckout";
 
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
+      <Route element={<ProtectedCheckout />}>
+        <Route path="/checkout" element={<Checkout />} />
+      </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/products" element={<Products />} />
       <Route path="/products/:id" element={<ProductDetails />} />
