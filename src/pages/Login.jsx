@@ -8,7 +8,7 @@ function Login() {
   const location = useLocation();
   const [email, setEmail] = useState('');
 
-  const redirectTo = location.state?.from?.pathname || '/'
+  const redirectTo = location.state?.from || '/';
 
   function handleSubmit(event) {
     event.preventDefault();
