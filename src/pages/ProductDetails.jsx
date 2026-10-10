@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Outlet, NavLink } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 function ProductDetails() {
   const { id }= useParams();
+  const { addToCart } = useCart();
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -51,7 +53,10 @@ function ProductDetails() {
           <h1 className="text-xl font-bold mb-4">{product.title}</h1>
           <p className="text-lg font-semibold mb-4">${product.price}</p>
           <p className="text-gray-600 mb-4">{product.description}</p>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <button 
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={() => addToCart(product)}
+          >
             Add to Cart
           </button>
         </div>
