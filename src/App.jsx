@@ -18,18 +18,30 @@ function App() {
     <Navbar />
 
     <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route element={<ProtectedCheckout />}>
-        <Route path="/checkout" element={<Checkout />} />
-      </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/products/:id" element={<ProductDetails />} />
-      <Route index element={<Overview />} />
-      <Route path="/products/:id/reviews" element={<Reviews />} />
-      <Route path="/products/:id/specifications" element={<Specifications />} />
-    </Routes>
+        {/* Homepage */}
+        <Route path="/" element={<Homepage />} />
+
+        {/* Cart */}
+        <Route path="/cart" element={<Cart />} />
+
+        {/* Protected Checkout */}
+        <Route element={<ProtectedCheckout />}>
+          <Route path="/checkout" element={<Checkout />} />
+        </Route>
+
+        {/* Login */}
+        <Route path="/login" element={<Login />} />
+
+        {/* Products */}
+        <Route path="/products" element={<Products />} />
+
+        {/* Product Details + Nested Tabs */}
+        <Route path="/products/:id" element={<ProductDetails />}>
+          <Route index element={<Overview />} />
+          <Route path="reviews" element={<Reviews />} />
+          <Route path="specifications" element={<Specifications />} />
+        </Route>
+      </Routes>
     </>
   )
 }
